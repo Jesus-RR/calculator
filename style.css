@@ -53,6 +53,10 @@
 .btn-number-0 {
   grid-column-start: 1;
   grid-column-end: 3;
+  background-color: #ffcab0;
+}
+.btn-comma {
+  background-color: #ffcab0;
 }
 .footer {
   /* margin: 10px; */
