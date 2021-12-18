@@ -1,5 +1,6 @@
 .body {
   background-color: #e0ffcd;
+  font-family: Arial, Helvetica, sans-serif;
 }
 .flex-container {
   display: flex;
@@ -29,11 +30,25 @@
 .screen {
   grid-column-start: 1;
   grid-column-end: -1;
+  font-size: 36px;
+  text-decoration: none;
+  text-align: right;
+  font-weight: bold;
+  margin-right: 10px;
+  margin-bottom: -15px;
+}
+.btn {
+  border-radius: 2%;
+  font-size: 20px;
+}
+.btn:hover {
+  background-color: rgb(240, 234, 234);
 }
 .btn-operator {
   background-color: #fdffcd;
 }
 .btn-number {
+  background-color: #ffcab0;
 }
 .btn-number-0 {
   grid-column-start: 1;
@@ -41,6 +56,9 @@
 }
 .footer {
   /* margin: 10px; */
-  padding: 20px;
-  background-color: #d4d4d4;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 50px;
+  text-align: center;
 }
