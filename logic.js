@@ -9,12 +9,15 @@ const btnAdd = document.getElementById('btnAdd');
 const btnComma = document.getElementById('btnComma');
 const btnEqual = document.getElementById('btnEqual');
 const numbers = Array.from(document.querySelectorAll('.btn-number'));
+let finished = false;
+
 function setScreen(value) {
-  let newValue = getScreen() + value;
-  if (getScreen().indexOf('.') === -1) {
+  if (finished === false) {
+    let newValue = getScreen() + value;
     screen.textContent = parseFloat(newValue);
   } else {
-    screen.textContent = newValue;
+    screen.textContent = parseFloat(value);
+    finished = false;
   }
 }
 function getScreen() {
@@ -59,28 +62,28 @@ let operation = ''; //div mul min add
 btnDivide.addEventListener('click', onDivide);
 function onDivide(e) {
   number1 = screen.textContent;
-  screen.textContent = 0;
+  finished = true;
   operation = 'div';
 }
 //button X
 btnMultiply.addEventListener('click', onMultiply);
 function onMultiply(e) {
   number1 = screen.textContent;
-  screen.textContent = 0;
+  finished = true;
   operation = 'mul';
 }
 //button -
 btnMinus.addEventListener('click', onMinus);
 function onMinus(e) {
   number1 = screen.textContent;
-  screen.textContent = 0;
+  finished = true;
   operation = 'min';
 }
 //button +
 btnAdd.addEventListener('click', onAdd);
 function onAdd(e) {
   number1 = screen.textContent;
-  screen.textContent = 0;
+  finished = true;
   operation = 'add';
 }
 //button =
@@ -99,20 +102,29 @@ function onEqual(e) {
   } else {
     result = screen.textContent;
   }
-
   number1 = 0;
   number2 = 0;
   operation = '';
   screen.textContent = result;
+  finished = true;
 }
 window.addEventListener('keydown', onKey);
 function onKey(e) {
-  console.log(e.key);
-  if (e.key===/[A-z]gi){}
-  if (e.key === ',') {
+  if (e.key === /[A-z]/) {
+    console.log('invalid key');
+  }
+  if (e.key === '.') {
     onComma(e);
   } else if (e.key === 'Backspace') {
     onC(e);
+  } else if (e.key === '%') {
+    onPercent(e);
+  } else if (e.key === '/') {
+    onDivide(e);
+  } else if (e.key === '*') {
+    onMultiply(e);
+  } else if (e.key === '-') {
+    onMinus(e);
   } else if (e.key === '+') {
     onAdd(e);
   } else if (e.key === 'Enter') {
